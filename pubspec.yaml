@@ -1,9 +1,12 @@
-name: handwritten_digit_classifier
+name: handwritten_digit_recognition
 description: An application to classify handwritten digits
 version: 1.0.0
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+
+module:
+  androidX: true 
 
 dependencies:
   camera: ^0.4.2
