@@ -120,7 +120,7 @@ class _HomeState extends State<Home> {
     return ListTile(
       leading: new Image.file(new File(res.fileName), height: 28, fit: BoxFit.scaleDown),
       title: Text(res.label),
-      subtitle: Text('Confidence: ' + res.confidence.toString()),
+      subtitle: Text('Accuracy: ' + res.confidence.toString()),
       trailing: Text(res.index.toString()),
     );
   }
