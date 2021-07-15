@@ -14,11 +14,11 @@ class HandwrittenDigitClassifierApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Handwritten Digit Classifier',
+      title: 'Handwritten Digit Recognition',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(title: 'Handwritten Digit Classifier'),
+      home: Home(title: 'Handwritten Digit Recognition'),
     );
   }
 }
@@ -32,7 +32,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> _imageFiles = new List<String>();
+  List<String> _imageFiles = [];
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,8 @@ class _HomeState extends State<Home> {
   }
 
   Future<List> _classifyImages() async {
-    var values = new List<MnistClassifierResult>();
+    // print("Classifying Image List...");
+    List<MnistClassifierResult> values = [];
 
     if (_imageFiles.length > 0) {
       for (String img in _imageFiles) {
@@ -97,7 +98,8 @@ class _HomeState extends State<Home> {
             if (i < values.length) {
               return _buildRow(values[i]);
             }
-          });
+          }
+        );
     } else {
       return Center(
         child: Column(

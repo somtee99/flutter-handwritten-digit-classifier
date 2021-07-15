@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 
@@ -54,7 +55,10 @@ Future<MnistClassifierResult> classifyImage(String imgFile) async {
     labels: MnistClassifier.modelLabels,
   );
 
-  var imageBytes = (await rootBundle.load(imgFile)).buffer;
+  var file = File(imgFile);
+  var loadedImage = file.readAsBytesSync().buffer.asByteData();
+  // var loadedImage = await rootBundle.load(imgFile);
+  var imageBytes = loadedImage.buffer;
   Image oriImage = decodeJpg(imageBytes.asUint8List());
   Image resizedImage = copyResize(oriImage, MnistClassifier.imgWidth, MnistClassifier.imgHeight);
 

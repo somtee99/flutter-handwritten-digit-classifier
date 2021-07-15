@@ -97,7 +97,7 @@ class _CameraAppState extends State<CameraApp> {
     takePicture().then((String filePath) {
       if (mounted && filePath != null) {
         //showInSnackBar('Picture saved to $filePath');
-        Navigator.pop(context,filePath);
+        Navigator.pop(context, filePath);
       }
     });
   }
@@ -107,6 +107,7 @@ class _CameraAppState extends State<CameraApp> {
     final String dirPath = '${extDir.path}/Pictures/handwritten_digits';
     await Directory(dirPath).create(recursive: true);
     final String filePath = '$dirPath/${timestamp()}.jpg';
+    // print("File path is $filePath");
 
     if (controller.value.isTakingPicture) {
       // A capture is already pending, do nothing.
